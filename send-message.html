@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ارسال پیام برای مدیریت</title>
+    <meta name="description" content="این یک فرم برای ارسال پیام به مدیریت سایت برای رفع نیاز های کاربران میباشد">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">شما از نسخه  <strong>قدیمی</strong> مرورگر استفاده میکنید. لطفا <a href="#">مرورگر خود را بروزرسانی کنید</a> تا تجربه لذت بخشی از کار با سایت داشته باشد.</p>
+        <![endif]-->
+    <nav>
+        <div class="main-menu">
+            <ul class="right-menu">
+                <li><a href="/index.html">صفحه اصلی</a></li>
+                <li><a href="/login.html">ورود/عضویت</a></li>
+            </ul>
+            <ul class="left-menu">
+                <li><a href="#" aria-label="instagram"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="#" aria-label="telegram"><i class="fa fa-telegram fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="#" aria-label="facebook"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="form request">
+        <!-- form information -->
+        <div id="info">
+            <h1 id="title" class="text-center">فرم ارسال درخواست دانشجویان</h1>
+            <p id="description" class="text-center">دانشجوی گرامی ، درخواست ها بر اساس اولویت ارسال بررسی شده و از طریق
+                <strong>ایمیل</strong> پاسخ داده میشوند</p>
+        </div>
+        <!-- form -->
+        <form id="send-request" action="/success.html" method="post">
+            <div class="field">
+                <label for="title">عنوان درخواست</label>
+                <input type="text" name="title" class="form-control" id="title" required>
+            </div>
+
+            <div class="row n2">
+
+                <div class="field">
+                    <label id="kurs" for="kurs">شماره کلاس</label>
+                    <input type="number" name="kurs" id="number" class="form-control" id="kurs" min="1" max="10">
+                </div>
+                <div class="field top">
+                    <label for="lang">مربوط به کلاس زبان</label>
+                    <select class="form-select" name="lang" id="dropdown" aria-label="یک گزینه را انتخاب کنید">
+                        <option selected disabled>انتخاب کلاس</option>
+                        <option value="de">آلمانی</option>
+                        <option value="en">انگلیسی</option>
+                        <option value="fr">فرانسه</option>
+                        <option value="es">اسپانیایی</option>
+                        <option value="ch">چینی</option>
+                        <option value="jp">ژاپنی</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row check">
+
+                <!-- radio button -->
+                <div class="field top">
+                    <label>شیفت برگزاری کلاس</label>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio-value" value="opt1" checked>
+                        <label class="form-check-label" for="radio-value">
+                            صبح
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio-value" value="opt2">
+                        <label class="form-check-label" for="radio-value">
+                            ظهر
+                        </label>
+                    </div>
+                </div>
+
+                <!-- checkbox -->
+                <div class="field top">
+                    <label>گزینه های پیشنهادی</label>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="opt1" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            گزینه اول
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="opt2" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            گزینه دوم
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <textarea name="message" class="form-control" cols="30" rows="5"
+                    placeholder="پیغام خود را وارد کنید"></textarea>
+            </div>
+
+            <button type="submit" id="submit" class="button button-block">ارسال درخواست</button>
+
+        </form>
+    </div>
+</body>
+<footer>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script>
+        jQuery('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+            var $this = jQuery(this),
+                label = $this.prev('label');
+
+            if (e.type === 'keyup') {
+                if ($this.val() === '') {
+                    label.removeClass('active highlight');
+                } else {
+                    label.addClass('active highlight');
+                }
+            } else if (e.type === 'blur') {
+                if ($this.val() === '') {
+                    label.removeClass('active highlight');
+                } else {
+                    label.removeClass('highlight');
+                }
+            } else if (e.type === 'focus') {
+
+                if ($this.val() === '') {
+                    label.removeClass('highlight');
+                } else if ($this.val() !== '') {
+                    label.addClass('highlight');
+                }
+            }
+
+        });
+    </script>
+</footer>
+
+</html>

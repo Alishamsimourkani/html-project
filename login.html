@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ورود و ثبت نام</title>
+    <meta name="description"
+        content="برای استفاده از خدمات سایت ابتدا باید عضو شوید سپس از همین صفحه اقدام به ورود نمایید">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">شما از نسخه  <strong>قدیمی</strong> مرورگر استفاده میکنید. لطفا <a href="#">مرورگر خود را بروزرسانی کنید</a> تا تجربه لذت بخشی از کار با سایت داشته باشد.</p>
+        <![endif]-->
+    <nav>
+        <div class="main-menu">
+            <ul class="right-menu">
+                <li><a href="/index.html">صفحه اصلی</a></li>
+                <li><a href="/login.html">ورود/عضویت</a></li>
+            </ul>
+            <ul class="left-menu">
+                <li><a href="#" aria-label="instagram"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="#" aria-label="telegram"><i class="fa fa-telegram fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="#" aria-label="facebook"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="contain">
+        <div class="form">
+            <ul class="tabs">
+                <li class="tab"><a href="#register">عضویت</a></li>
+                <li class="tab active"><a href="#login">ورود</a></li>
+            </ul>
+
+            <div class="tab-content">
+
+                <div id="login">
+                    <h1>ورود به سایت</h1>
+
+                    <form action="/send-message.html" method="post">
+
+                        <div class="field">
+                            <label for="email">ایمیل</label>
+                            <input name="email" type="email" required autocomplete="off" />
+                        </div>
+
+                        <div class="field">
+                            <label for="password">رمز عبور</label>
+                            <input name="password" type="password" required autocomplete="off" />
+                        </div>
+
+                        <p class="tab"><a href="#forget">فراموشی رمز عبور!</a></p>
+
+                        <button type="submit" class="button button-block">ورود</button>
+
+                    </form>
+
+                </div>
+                <div id="forget">
+                    <h1>بازیابی رمز عبور</h1>
+                    <form action="/index.html" method="post">
+                        <div class="field">
+                            <label for="email">ایمیل</label>
+                            <input name="email" type="email" required autocomplete="off" />
+                        </div>
+                        <span class="req">به منظور بازیابی رمز عبور ایمیل خود را وارد نمایید.</span>
+                        <button type="submit" class="button button-block">بازیابی رمز عبور</button>
+                    </form>
+                </div>
+                <div id="register">
+                    <h1>ثبت نام در سامانه پاسخگویی</h1>
+
+                    <form action="/send-message.html" method="POST">
+
+                        <div class="name">
+                            <div class="field">
+                                <label for="name">نام</label>
+                                <input name="name" type="text" required autocomplete="off" />
+                            </div>
+
+                            <div class="field">
+                                <label for="family">نام خانوادگی</label>
+                                <input name="family" type="text" required autocomplete="off" />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">ایمیل</label>
+                            <input name="email" type="email" required autocomplete="off" />
+                        </div>
+
+                        <div class="field">
+                            <label for="password">رمز عبور</label>
+                            <input name="password" type="password" required autocomplete="off" />
+                        </div>
+                        <span class="req">همه فیلد ها الزامی هستند*</span>
+                        <button type="submit" class="button button-block">ثبت نام</button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div id="bimage"></div>
+    </div>
+</body>
+<footer>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script>
+        jQuery('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+            var $this = jQuery(this),
+                label = $this.prev('label');
+
+            if (e.type === 'keyup') {
+                if ($this.val() === '') {
+                    label.removeClass('active highlight');
+                } else {
+                    label.addClass('active highlight');
+                }
+            } else if (e.type === 'blur') {
+                if ($this.val() === '') {
+                    label.removeClass('active highlight');
+                } else {
+                    label.removeClass('highlight');
+                }
+            } else if (e.type === 'focus') {
+
+                if ($this.val() === '') {
+                    label.removeClass('highlight');
+                } else if ($this.val() !== '') {
+                    label.addClass('highlight');
+                }
+            }
+
+        });
+        jQuery('.tab a').on('click', function (e) {
+
+            e.preventDefault();
+
+            jQuery(this).parent().addClass('active');
+            jQuery(this).parent().siblings().removeClass('active');
+
+            target = jQuery(this).attr('href');
+
+            jQuery('.tab-content > div').not(target).hide();
+
+            jQuery(target).fadeIn(600);
+
+        });
+    </script>
+</footer>
+
+</html>
